@@ -1,17 +1,13 @@
-class Dogs {
+class DogService {
+  apiUrls: string;
   constructor() {
     this.apiUrls = "https://dog.ceo/api/breed/hound/images";
   }
 
   getDogUrls() {
-    const requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
     const dogUrls = [];
 
-    fetch(this.apiUrls, requestOptions)
+    fetch(this.apiUrls)
       .then((response) => response.json())
       .then((result) => {
         for (let i = 0; i < 25; i++) {
@@ -23,4 +19,4 @@ class Dogs {
     return dogUrls;
   }
 }
-export default Dogs;
+export default DogService;
