@@ -1,20 +1,39 @@
 import React from "react";
 import { useQuery } from "react-query";
-import DogList from "./dog_list/dog_list";
-import Navbar from "./navbar/navbar";
 import DogService from "./service/dog_service";
 
 interface IProps {
-  dogService: DogService;
+  dogService: {
+    getDogs(): Promise<IDogs>;
+  };
+}
+
+export interface IDogs {
+  message: string[];
+  status: string;
 }
 
 const App = ({ dogService }: IProps) => {
-  const { isLoading, data } = useQuery<>("Dogs");
+  const { data, isLoading } = useQuery<IDogs>(
+    "Dogs",
+    () => dogService.getDogs(),
+    {
+      refetchInterval: 100000,
+    }
+  );
 
   return (
     <>
-      <Navbar />
-      <DogList />
+      {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
+      {isLoading ? (
+        <div> loading.... </div>
+      ) : (
+        data?.message
+          .slice(0, 25)
+          .map((dogUrl) => (
+            <img src={dogUrl} width="300px" height="300px"></img>
+          ))
+      )}
     </>
   );
 };
