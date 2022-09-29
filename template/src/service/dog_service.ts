@@ -1,16 +1,15 @@
 import { IDogs } from "../app";
 
 class DogService {
-  private bassetRamdomUrl: string;
   private baseUrl: string;
 
   constructor() {
     this.baseUrl = "https://dog.ceo/api";
-    this.bassetRamdomUrl = `${this.baseUrl}/breed/hound/basset/images/random`;
   }
 
-  async getDogsByCount(count: number): Promise<IDogs> {
-    return await fetch(`${this.bassetRamdomUrl}/${count}`)
+  async getBassetsByCount(count: number): Promise<IDogs> {
+    const bassetRamdomUrl: string = `${this.baseUrl}/breed/hound/basset/images/random`;
+    return await fetch(`${bassetRamdomUrl}/${count}`)
       .then((response) => response.json())
       .catch((error) => console.log("error", error));
   }
