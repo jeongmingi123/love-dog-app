@@ -14,7 +14,7 @@ const Nav = tw.nav`
 
 const Title = tw.span`
   text-2xl
-  ml-3
+  ml
 `;
 
 const Icon = tw.i<{ icon: string }>`

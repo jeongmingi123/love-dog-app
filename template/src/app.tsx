@@ -7,7 +7,7 @@ import Navbar from "./navbar/navbar";
 
 interface IProps {
   dogService: {
-    getDogs(): Promise<IDogs>;
+    getBassetsByCount(count: number): Promise<IDogs>;
   };
 }
 
@@ -73,7 +73,7 @@ const myVars = {
 const App = ({ dogService }: IProps) => {
   const { data, isLoading } = useQuery<IDogs>(
     "Dogs",
-    () => dogService.getDogs(),
+    () => dogService.getBassetsByCount(28),
     {
       refetchInterval: 100000,
     }
