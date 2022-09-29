@@ -4,7 +4,7 @@ class DogService {
   private apiUrls: string;
 
   constructor() {
-    this.apiUrls = "https://dog.ceo/api/breed/hound/images";
+    this.apiUrls = "https://dog.ceo/api/breed/hound/basset/images/random/28";
   }
 
   async getDogs(): Promise<IDogs> {
