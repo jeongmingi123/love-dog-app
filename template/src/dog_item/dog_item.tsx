@@ -1,29 +1,36 @@
-// import React, { Component } from "react";
-// import styles from "./dog_item.module.css";
+import tw from "tailwind-styled-components";
+import { motion } from "framer-motion";
 
-// class DogItem extends Component {
-//   render() {
-//     return (
-//       <>
-//         <li className={styles.container}>
-//           <div className={styles.item}>
-//             {/* <img src={this.props.dogItem} className={styles.image} alt="dog" /> */}
-//           </div>
-//           <div className={styles.text}>
-//             <p>Pretty Dog</p>
-//             <p>Hello</p>
-//           </div>
-//         </li>
-//       </>
-//     );
-//   }
-// }
+interface IProps {
+  dogUrl: string;
+}
 
-// export default DogItem;
-import React from "react";
+const DogImg = tw(motion.img)`
+w-72
+h-64
+rounded-md
+`;
 
-const DogItem = () => {
-  return <></>;
+const myVars = {
+  start: { scale: 0.8 },
+  end: {
+    scale: 1,
+    transition: { type: "spring", delay: 0.5 },
+  },
+};
+
+const DogItem = ({ dogUrl }: IProps) => {
+  return (
+    <>
+      <DogImg
+        src={dogUrl}
+        key={dogUrl}
+        variants={myVars}
+        initial="start"
+        animate="end"
+      />
+    </>
+  );
 };
 
 export default DogItem;

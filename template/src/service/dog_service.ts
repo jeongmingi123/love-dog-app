@@ -1,5 +1,15 @@
 import { IDogs } from "../app";
 
+export type Dog =
+  | "afghan"
+  | "basset"
+  | "blood"
+  | "english"
+  | "ibizan"
+  | "plott"
+  | "walker"
+  | undefined;
+
 class DogService {
   private baseUrl: string;
 
@@ -7,9 +17,10 @@ class DogService {
     this.baseUrl = "https://dog.ceo/api";
   }
 
-  async getBassetsByCount(count: number): Promise<IDogs> {
-    const bassetRamdomUrl: string = `${this.baseUrl}/breed/hound/basset/images/random`;
-    return await fetch(`${bassetRamdomUrl}/${count}`)
+  async findDogsByDogTypeAndCount(dogType: Dog, count: number): Promise<IDogs> {
+    const dogsRandomUrl: string = `${this.baseUrl}/breed/hound/${dogType}/images/random`;
+
+    return await fetch(`${dogsRandomUrl}/${count}`)
       .then((response) => response.json())
       .catch((error) => console.log("error", error));
   }
