@@ -32,36 +32,43 @@ const Loading = tw(motion.div)`
 // MainDog
 const MainDog = tw.div`
   grid
+  place-items-center
+  h-auto
+  bg-red-300
+  rounded-md
+
   xl:grid-cols-2
-  xl:h-96
+  xl:h-auto
+  xl:items-center
   lg:grid-cols-1
   lg:place-items-center
   lg:place
   lg:h-auto
+
   md:place-items-center
   md:w-2/3
   md:h-auto
+
   sm:h-auto
-  h-auto
-  tab
-  items-center
-  bg-red-300
-  rounded-md
 `;
 
 const MainDogImg = tw(motion.img)`
   w-72
   h-64
+  mt-10
   rounded-md
-  xl:mr-20
-  xl:ml-20
-  lg:m-0
+  xl:mb-10
   lg:mt-10
   md:mt-10
 `;
 
 const MainText = tw(motion.p)`
   w-full
+  mt-10
+  mb-10
+  pl-5
+  pr-5
+  text-xl
   xl:pr-20
   lg:p-0
   lg:pt-5
@@ -73,27 +80,31 @@ const MainText = tw(motion.p)`
   md:pr-8
   md:mb-10
   sm:pt-5
-  text-xl
 `;
 
 // Tap
 const TapBar = tw.div`
   grid
+  grid-cols-1
+  place-items-center
+  h-96
+  w-full
+  pl-16
+  pr-16
+  text-3xl
+  text-gray-500
   2xl:grid-cols-7
   lg:grid-cols-4
   lg:h-40
   sm:grid-cols-3
   sm:h-48
+  sm:w-2/3
   items-center
   justify-between
   rounded-md
   bg-green-200
-  w-2/3
-  h-32
-  pl-16
-  pr-16
-  text-3xl
-  text-gray-500
+
+
 `;
 
 const Tap = tw.div<{ isActive: boolean }>`
@@ -103,6 +114,7 @@ const Tap = tw.div<{ isActive: boolean }>`
 // Dogs
 const Wrapper = tw.div`
   grid
+  place-items-center
   xl:grid-cols-4
   lg:grid-cols-3
   md:grid-cols-2
@@ -128,6 +140,7 @@ const myVars = {
 
 const Home = ({ dogService }: IProps) => {
   const params = useParams<{ dogName: Dog }>();
+
   const afghanMatch = useMatch("/afghan");
   const bassetMatch = useMatch("/basset");
   const bloodMatch = useMatch("/blood");
