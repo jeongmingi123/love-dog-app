@@ -17,7 +17,10 @@ class DogService {
     this.baseUrl = "https://dog.ceo/api";
   }
 
-  async findDogsByDogTypeAndCount(dogType: Dog, count: number): Promise<IDogs> {
+  async findRandomDogsByTypeAndCount(
+    dogType: Dog,
+    count: number
+  ): Promise<IDogs> {
     const dogsRandomUrl: string = `${this.baseUrl}/breed/hound/${dogType}/images/random`;
 
     return await fetch(`${dogsRandomUrl}/${count}`)

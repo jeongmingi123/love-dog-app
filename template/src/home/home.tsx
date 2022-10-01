@@ -9,7 +9,7 @@ import { Link, useMatch, useParams } from "react-router-dom";
 
 interface IProps {
   dogService: {
-    findDogsByDogTypeAndCount(dogType: Dog, count: number): Promise<IDogs>;
+    findRandomDogsByTypeAndCount(dogType: Dog, count: number): Promise<IDogs>;
   };
 }
 
@@ -151,9 +151,9 @@ const Home = ({ dogService }: IProps) => {
 
   const { data, isLoading } = useQuery<IDogs>(["Dogs", params.dogName], () => {
     if (params.dogName === undefined || params.dogName === null) {
-      return dogService.findDogsByDogTypeAndCount("afghan", 28);
+      return dogService.findRandomDogsByTypeAndCount("afghan", 28);
     }
-    return dogService.findDogsByDogTypeAndCount(params?.dogName, 28);
+    return dogService.findRandomDogsByTypeAndCount(params?.dogName, 28);
   });
 
   return (

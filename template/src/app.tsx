@@ -4,7 +4,7 @@ import Home from "./home/home";
 
 interface IProps {
   dogService: {
-    findDogsByDogTypeAndCount(dogType: Dog, count: number): Promise<IDogs>;
+    findRandomDogsByTypeAndCount(dogType: Dog, count: number): Promise<IDogs>;
   };
 }
 
